@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+  <meta name="description" content="Aloeworld Mobility - Plataforma eletrónica TVDE independente de veículos, com registos, compliance, pagamentos e auditoria." />
+  <title>Aloeworld Mobility | Plataforma TVDE</title>
+  <style>
+:root {
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #020617;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --dark: #020617;
+  --dark2: #0f172a;
+  --green: #34d399;
+  --green2: #059669;
+  --amber: #f59e0b;
+  --rose: #e11d48;
+  --shadow: 0 10px 30px rgba(2, 6, 23, .08);
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+.app { min-height: 100vh; padding: 24px; }
+.container { width: min(1280px, 100%); margin: 0 auto; }
+.header { overflow: hidden; border-radius: 28px; background: white; box-shadow: var(--shadow); margin-bottom: 24px; }
+.hero { background: var(--dark); color: white; padding: 28px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 16px; }
+.logo { width: 60px; height: 60px; border-radius: 18px; background: var(--green); display: grid; place-items: center; color: var(--dark); font-weight: 900; font-size: 28px; }
+.kicker { margin: 0 0 4px; font-size: 12px; letter-spacing: .24em; color: var(--green); text-transform: uppercase; font-weight: 900; }
+h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1; letter-spacing: -.04em; }
+.hero p { margin: 6px 0 0; color: #cbd5e1; }
+.legal { color: var(--green) !important; font-size: 12px; font-weight: 800; }
+.nav { display: flex; gap: 8px; overflow-x: auto; padding: 12px; }
+.nav button { border: 0; border-radius: 16px; padding: 12px 16px; white-space: nowrap; background: #f1f5f9; color: #475569; font-weight: 900; display: inline-flex; align-items: center; gap: 8px; transition: .2s ease; }
+.nav button.active, .nav button:hover { background: var(--dark); color: white; }
+.grid { display: grid; gap: 20px; }
+.grid-2 { grid-template-columns: 0.95fr 1.05fr; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 2px 8px rgba(2, 6, 23, .03); }
+.card.dark { background: linear-gradient(135deg, #020617, #172033); color: white; border: 0; }
+.card.green { background: #ecfdf5; border-color: #a7f3d0; }
+.card.amber { background: #fffbeb; border-color: #fde68a; }
+.section-title { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 18px; }
+h2 { margin: 0; font-size: 26px; letter-spacing: -.03em; }
+h3 { margin: 0; font-size: 20px; letter-spacing: -.02em; }
+h4 { margin: 0; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.stat { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+.stat .value { font-size: 28px; font-weight: 950; margin-top: 4px; }
+.iconbox { width: 44px; height: 44px; border-radius: 16px; display: grid; place-items: center; background: var(--dark); color: white; flex: 0 0 auto; }
+.iconbox.green { background: var(--green); color: var(--dark); }
+.tabs2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: rgba(255,255,255,.1); padding: 8px; border-radius: 18px; }
+.tabs2 button, .choice { border: 0; border-radius: 14px; padding: 12px 14px; font-weight: 900; background: rgba(255,255,255,.08); color: white; transition: .2s ease; text-align: left; }
+.tabs2 button.active, .choice.active { background: white; color: var(--dark); }
+.choice-grid { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
+.choice-grid.two { grid-template-columns: repeat(2, 1fr); }
+.form { display: grid; gap: 16px; margin-top: 22px; }
+.form-row { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+label span { display: block; color: #cbd5e1; font-size: 14px; margin-bottom: 6px; }
+input, select { width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.1); color: white; padding: 13px 14px; outline: 0; }
+input::placeholder { color: #94a3b8; }
+select option { color: var(--text); }
+input[type="file"] { padding: 10px; color: #cbd5e1; }
+.btn { border: 0; border-radius: 16px; padding: 13px 16px; font-weight: 950; background: var(--green); color: var(--dark); transition: .2s ease; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+.btn:hover { filter: brightness(.95); transform: translateY(-1px); }
+.btn.secondary { background: rgba(255,255,255,.1); color: white; }
+.btn.dark { background: var(--dark); color: white; }
+.btn.small { padding: 8px 12px; font-size: 12px; border-radius: 999px; }
+.note { border-radius: 18px; padding: 14px; background: rgba(255,255,255,.1); color: #cbd5e1; font-size: 14px; }
+.note.amber { background: rgba(245, 158, 11, .16); color: #fef3c7; }
+.uploads { display: grid; gap: 10px; padding: 14px; border-radius: 18px; background: rgba(255,255,255,.1); }
+.uploads h4 { display: flex; gap: 8px; align-items: center; }
+.upload { border: 1px solid rgba(255,255,255,.1); border-radius: 16px; background: rgba(255,255,255,.05); padding: 12px; }
+.profile-card { width: 100%; text-align: left; border: 0; border-radius: 20px; padding: 18px; background: #f8fafc; transition: .2s ease; }
+.profile-card:hover { background: #ecfdf5; transform: translateY(-2px); box-shadow: var(--shadow); }
+.profile-card .open { margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; background: var(--dark); color: white; padding: 9px 13px; font-size: 12px; font-weight: 950; }
+.feature { transition: .2s ease; }
+.feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.list { display: grid; gap: 10px; margin-top: 16px; }
+.list-item { display: flex; align-items: center; gap: 10px; background: #f8fafc; border-radius: 16px; padding: 10px 12px; color: #334155; font-size: 14px; }
+.pill { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 900; background: #f1f5f9; color: #475569; }
+.pill.ok { background: #ecfdf5; color: #047857; }
+.pill.pending { background: #fffbeb; color: #b45309; }
+.pill.danger { background: #fff1f2; color: #be123c; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 780px; font-size: 14px; }
+th { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+td { padding: 14px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.filterbar { display: flex; flex-wrap: wrap; gap: 8px; }
+.filterbar button { border: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 900; background: #f1f5f9; color: #475569; }
+.filterbar button.active { background: var(--dark); color: white; }
+.table-badge { display: inline-flex; border-radius: 999px; background: white; padding: 6px 10px; font-size: 12px; font-weight: 800; color: #475569; }
+.footer { margin-top: 28px; border-radius: 24px; background: white; padding: 18px; box-shadow: var(--shadow); color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 14px; }
+.hidden { display: none !important; }
+@media (max-width: 980px) { .grid-2, .grid-3, .grid-4, .form-row, .choice-grid { grid-template-columns: 1fr; } .hero { align-items: start; } .footer { flex-direction: column; } }
+@media (max-width: 640px) { .app { padding: 12px; } .hero { padding: 20px; } .brand { align-items: start; } .logo { width: 48px; height: 48px; } .card { padding: 18px; } }
+
+  </style>
+</head>
+<body>
+  <noscript>Esta aplicação necessita de JavaScript ativo.</noscript>
+  <main id="app"></main>
+  <script>
+const state = {
+  tab: "acesso",
+  authMode: "login",
+  registerType: "operator",
+  vehicleOwnerType: "Empresa",
+  tripCategory: "Eco",
+  scheduled: false,
+  from: "Praça da República, Coimbra",
+  to: "Estação Coimbra-B",
+  adminFilter: "Todos",
+  registrations: [
+    { id: "REG-OP-001", type: "Operador", name: "Via Mondego Services, Lda.", linkedTo: "—", documents: "4/5", status: "Pendente", submittedAt: "2026-05-28 10:42" },
+    { id: "REG-MOT-001", type: "Motorista", name: "Maria Serra", linkedTo: "Operador Centro Premium, Lda.", documents: "3/5", status: "Pendente", submittedAt: "2026-05-28 11:08" },
+    { id: "REG-VEI-001", type: "Veículo", name: "Tesla Model 3 · EV-23-MB", linkedTo: "Particular: Ana Martins", documents: "4/5", status: "A rever", submittedAt: "2026-05-28 12:21" },
+    { id: "REG-OP-002", type: "Operador", name: "Turismo Executivo Atlântico, Lda.", linkedTo: "—", documents: "5/5", status: "Aprovado", submittedAt: "2026-05-27 17:12" }
+  ],
+  audit: [
+    { id: "AUD-001", date: "2026-05-28 12:46", user: "Administrador", action: "Validação documental", entity: "Operador Centro Premium, Lda.", from: "Pendente", to: "Aprovado" },
+    { id: "AUD-002", date: "2026-05-28 13:04", user: "Compliance", action: "Pedido de documento adicional", entity: "Tesla Model 3 · EV-23-MB", from: "Pendente", to: "A rever" }
+  ]
+};
+
+const tabs = [
+  ["acesso", "🔐 Acesso"], ["geral", "📊 Geral"], ["passageiro", "📱 Passageiro"], ["motorista", "🚘 Motorista"],
+  ["operador", "🏢 Operador"], ["compliance", "🛡️ Compliance"], ["admin", "✅ Admin"], ["pagamentos", "💳 Pagamentos"],
+  ["suporte", "🎧 Suporte"], ["relatorios", "📄 Relatórios"]
+];
+
+const operators = [
+  { id: "OP-001", name: "Operador Centro Premium, Lda.", license: "TVDE-PT-20491", status: "Aprovado", drivers: 12, vehicles: 10, compliance: 98 },
+  { id: "OP-002", name: "Via Mondego Services, Lda.", license: "TVDE-PT-21903", status: "Em validação", drivers: 5, vehicles: 4, compliance: 76 },
+  { id: "OP-003", name: "Turismo Executivo Atlântico, Lda.", license: "TVDE-PT-22488", status: "Aprovado", drivers: 8, vehicles: 7, compliance: 94 }
+];
+const validatedOperators = operators.filter(o => o.status === "Aprovado");
+
+const drivers = [
+  { name: "João Martins", number: "M-TVDE-89345", operator: "Operador Centro Premium, Lda.", vehicle: "Mercedes Classe C · 2022", plate: "AB-34-CD", status: "Ativo", docs: ["CMTVDE", "Carta Grupo 2", "Registo Criminal", "Contrato"] },
+  { name: "Maria Serra", number: "M-TVDE-76109", operator: "Operador Centro Premium, Lda.", vehicle: "Tesla Model 3 · 2023", plate: "EV-23-MB", status: "Pendente", docs: ["CMTVDE", "Carta Grupo 2", "Seguro"] },
+  { name: "Pedro Almeida", number: "M-TVDE-69210", operator: "Turismo Executivo Atlântico, Lda.", vehicle: "Peugeot 508 · 2021", plate: "TV-91-DE", status: "Ativo", docs: ["CMTVDE", "Carta Grupo 2", "Seguro", "Contrato"] }
+];
+
+const trips = [
+  { from: "Praça da República, Coimbra", to: "Estação Coimbra-B", price: 7.85, distance: "4,2 km", time: "11 min", category: "Eco", status: "Concluída" },
+  { from: "Hotel Quinta das Lágrimas", to: "Aeroporto do Porto", price: 142, distance: "123 km", time: "1h 22m", category: "Executivo", status: "Agendada" },
+  { from: "Universidade de Coimbra", to: "Convento São Francisco", price: 6.75, distance: "3,1 km", time: "9 min", category: "Elétrico", status: "Em curso" }
+];
+
+const categories = [
+  { name: "Eco", description: "Viagens urbanas com preço competitivo", base: 4.2 },
+  { name: "Elétrico", description: "Mobilidade sustentável e silenciosa", base: 5.2 },
+  { name: "Executivo", description: "Viaturas premium para empresas e eventos", base: 6.5 },
+  { name: "Familiar", description: "Mais espaço para famílias e bagagem", base: 6.0 },
+  { name: "Turismo", description: "Transfers, hotéis, AL e roteiros turísticos", base: 12.0 },
+  { name: "Empresas", description: "Conta corporate e faturação mensal", base: 8.5 }
+];
+
+const databaseTables = [
+  { table: "operadores", description: "Empresas operadoras TVDE registadas e validadas.", fields: ["id", "nome", "nipc", "licenca_tvde", "gerente", "telefone", "email", "estado"] },
+  { table: "motoristas", description: "Motoristas associados obrigatoriamente a um operador TVDE validado.", fields: ["id", "operador_id", "nome", "nif", "cmtvde", "carta_conducao", "telefone", "estado"] },
+  { table: "veiculos", description: "Viaturas propostas, validadas ou associadas a operadores TVDE.", fields: ["id", "proprietario_id", "operador_id", "matricula", "marca", "modelo", "ano", "seguro", "inspecao", "estado"] },
+  { table: "proprietarios_veiculos", description: "Empresas ou particulares que propõem veículos para aluguer/parceria.", fields: ["id", "tipo", "nome", "nif_nipc", "telefone", "email", "valor_pretendido", "estado"] },
+  { table: "documentos", description: "Documentos carregados para validação e auditoria.", fields: ["id", "entidade_tipo", "entidade_id", "tipo_documento", "ficheiro", "validade", "estado"] },
+  { table: "auditoria", description: "Histórico de ações administrativas e alterações de estado.", fields: ["id", "data", "utilizador", "acao", "estado_anterior", "estado_novo"] }
+];
+
+const docs = {
+  operator: ["Licença operador TVDE", "Certidão permanente", "Registo criminal da gerência", "Seguro RC", "Contrato de adesão"],
+  driver: ["Certificado CMTVDE", "Carta de condução grupo 2", "Registo criminal", "Contrato com operador", "Documento de identificação"],
+  vehicle: ["DUA / Documento único automóvel", "Seguro", "Inspeção periódica", "Comprovativo de propriedade", "Proposta de aluguer/parceria"]
+};
+
+function euro(v) { return v.toLocaleString("pt-PT", { style: "currency", currency: "EUR" }); }
+function pill(status) {
+  const ok = ["Aprovado", "Ativo", "Conforme", "Pago", "Concluída"].includes(status);
+  const pending = ["Em validação", "Pendente", "A rever", "Agendada", "Em curso"].includes(status);
+  const danger = ["Bloqueado", "Expirado", "Rejeitado"].includes(status);
+  return `<span class="pill ${ok ? "ok" : pending ? "pending" : danger ? "danger" : ""}">${ok ? "✓" : pending ? "◷" : danger ? "✕" : "•"} ${status}</span>`;
+}
+function stat(icon, label, value, detail) {
+  return `<div class="card"><div class="stat"><div><div class="muted small">${label}</div><div class="value">${value}</div>${detail ? `<div class="muted small">${detail}</div>` : ""}</div><div class="iconbox">${icon}</div></div></div>`;
+}
+function fileUploads(type) {
+  return `<div class="uploads"><h4>📤 Upload de documentos obrigatórios</h4>${docs[type].map(d => `<label class="upload"><span>${d}</span><input type="file" /></label>`).join("")}</div>`;
+}
+function setTab(tab) { state.tab = tab; render(); }
+function setRegister(type) { state.authMode = "register"; state.registerType = type; render(); }
+function setAdminFilter(filter) { state.adminFilter = filter; render(); }
+function changeStatus(id, newStatus) {
+  const item = state.registrations.find(r => r.id === id);
+  if (!item) return;
+  const from = item.status;
+  item.status = newStatus;
+  state.audit.unshift({ id: `AUD-${String(state.audit.length + 1).padStart(3, "0")}`, date: new Date().toLocaleString("pt-PT"), user: "Administrador", action: "Alteração de estado", entity: item.name, from, to: newStatus });
+  render();
+}
+
+function shell(content) {
+  return `<div class="app"><div class="container"><header class="header"><section class="hero"><div class="brand"><div class="logo">A</div><div><p class="kicker">Plataforma TVDE</p><h1>Aloeworld Mobility</h1><p>Mobilidade TVDE transparente, segura e portuguesa.</p><p class="legal">Plataforma eletrónica TVDE independente dos veículos</p></div></div></section><nav class="nav">${tabs.map(([id, label]) => `<button class="${state.tab === id ? "active" : ""}" onclick="setTab('${id}')">${label}</button>`).join("")}</nav></header>${content}<footer class="footer"><span>Protótipo publicável para plataforma TVDE com registos, uploads, aprovação manual e auditoria.</span><strong>Próxima fase: API, base de dados real, autenticação, mapas e pagamentos reais.</strong></footer></div></div>`;
+}
+
+function viewAcesso() {
+  const isRegister = state.authMode === "register";
+  const regButtons = [
+    ["operator", "🏢", "Operador TVDE"], ["driver", "👤", "Motorista"], ["vehicle", "🚘", "Veículo para aluguer"]
+  ];
+  let form = "";
+  if (!isRegister) {
+    form = `<div class="form"><label><span>Email</span><input type="email" placeholder="email@exemplo.pt" /></label><label><span>Palavra-passe</span><input type="password" placeholder="••••••••" /></label><button class="btn">Entrar na plataforma</button><button class="btn secondary">Recuperar palavra-passe</button></div>`;
+  } else if (state.registerType === "operator") {
+    form = `<div class="form"><div class="note">Registo destinado a empresas licenciadas como operador TVDE ou em processo de adesão.</div><label><span>Nome da empresa operadora</span><input placeholder="Ex.: Operador Centro Premium, Lda." /></label><div class="form-row"><label><span>NIF/NIPC</span><input placeholder="NIPC da empresa" /></label><label><span>N.º licença operador TVDE</span><input placeholder="TVDE-PT-00000" /></label></div><div class="form-row"><label><span>Gerente / responsável</span><input placeholder="Nome do responsável" /></label><label><span>Telemóvel</span><input placeholder="+351 900 000 000" /></label></div>${fileUploads("operator")}<label><span>Email de acesso</span><input type="email" placeholder="email@exemplo.pt" /></label><label><span>Palavra-passe</span><input type="password" placeholder="••••••••" /></label><button class="btn">Submeter registo de operador</button></div>`;
+  } else if (state.registerType === "driver") {
+    form = `<div class="form"><div class="note">Registo destinado a motoristas TVDE. A conta fica pendente até validação documental e associação a operador aprovado.</div><label><span>Nome completo do motorista</span><input placeholder="Nome completo" /></label><div class="form-row"><label><span>NIF</span><input placeholder="NIF do motorista" /></label><label><span>Telemóvel</span><input placeholder="+351 900 000 000" /></label></div><div class="form-row"><label><span>N.º certificado CMTVDE</span><input placeholder="N.º de motorista TVDE" /></label><label><span>Carta de condução</span><input placeholder="N.º carta / grupo 2" /></label></div><label><span>Operador TVDE associado validado</span><select><option>Selecionar operador aprovado</option>${validatedOperators.map(o => `<option>${o.name} · ${o.license}</option>`).join("")}</select></label>${fileUploads("driver")}<label><span>Email de acesso</span><input type="email" placeholder="email@exemplo.pt" /></label><label><span>Palavra-passe</span><input type="password" placeholder="••••••••" /></label><button class="btn">Submeter registo de motorista</button></div>`;
+  } else {
+    form = `<div class="form"><div class="note amber">Área para empresas ou particulares manifestarem interesse em disponibilizar veículo para aluguer/parceria. A plataforma mantém independência face aos veículos.</div><div><span class="small" style="color:#cbd5e1">Tipo de proprietário</span><div class="choice-grid two" style="margin-top:8px"><button class="choice ${state.vehicleOwnerType === "Empresa" ? "active" : ""}" onclick="state.vehicleOwnerType='Empresa';render()">Empresa</button><button class="choice ${state.vehicleOwnerType === "Particular" ? "active" : ""}" onclick="state.vehicleOwnerType='Particular';render()">Particular</button></div></div><div class="form-row"><label><span>Nome / entidade proprietária</span><input placeholder="Nome do proprietário" /></label><label><span>NIF/NIPC</span><input placeholder="NIF ou NIPC" /></label></div><label><span>Contacto telefónico</span><input placeholder="+351 900 000 000" /></label><div class="form-row"><label><span>Matrícula</span><input placeholder="AA-00-AA" /></label><label><span>Ano</span><input placeholder="2023" /></label></div><div class="form-row"><label><span>Marca</span><input placeholder="Ex.: Mercedes" /></label><label><span>Modelo</span><input placeholder="Ex.: Classe C" /></label></div><div class="form-row"><label><span>Seguro / cobertura</span><input placeholder="Companhia / apólice" /></label><label><span>Valor pretendido de aluguer</span><input placeholder="Ex.: 700 €/mês" /></label></div>${fileUploads("vehicle")}<label><span>Email de acesso</span><input type="email" placeholder="email@exemplo.pt" /></label><label><span>Palavra-passe</span><input type="password" placeholder="••••••••" /></label><button class="btn">Submeter veículo para análise</button></div>`;
+  }
+
+  return `<div class="grid grid-2"><section class="card dark"><div class="brand"><div class="iconbox green">🔐</div><div><h2>Acesso à plataforma</h2><p class="muted" style="color:#cbd5e1">Início de sessão e registo separado para operadores, motoristas e veículos para aluguer/parceria.</p></div></div><div class="tabs2" style="margin-top:24px"><button class="${!isRegister ? "active" : ""}" onclick="state.authMode='login';render()">Iniciar sessão</button><button class="${isRegister ? "active" : ""}" onclick="state.authMode='register';render()">Criar registo</button></div>${isRegister ? `<div style="margin-top:22px"><span class="small" style="color:#cbd5e1">Tipo de registo</span><div class="choice-grid" style="margin-top:10px">${regButtons.map(([id, icon, label]) => `<button class="choice ${state.registerType === id ? "active" : ""}" onclick="state.registerType='${id}';render()"><div>${icon}</div>${label}</button>`).join("")}</div></div>` : ""}${form}</section><section class="grid"><div class="card"><h3>Estrutura dos registos</h3><p class="muted">Clique numa das opções abaixo para abrir imediatamente o formulário de preenchimento correspondente.</p><div class="list">${[
+    ["operator", "1. Registo de Operadores", "Empresas TVDE aderentes, com licença, NIPC, gerente, contacto, veículos, motoristas e documentos.", "Abrir formulário de operador"],
+    ["driver", "2. Registo de Motoristas", "Motoristas TVDE, com CMTVDE, carta, NIF, contacto, operador associado e validação documental.", "Abrir formulário de motorista"],
+    ["vehicle", "3. Veículos para aluguer/parceria", "Empresas ou particulares podem propor veículos, indicando matrícula, marca, modelo, ano, seguro e valor pretendido.", "Abrir formulário de veículo"]
+  ].map(([id, title, text, button]) => `<button class="profile-card" onclick="setRegister('${id}')"><h4>✅ ${title}</h4><p class="muted">${text}</p><span class="open">${button} ›</span></button>`).join("")}</div></div><div class="card amber"><h3>Nota legal importante</h3><p>Esta área de veículos deve funcionar como manifestação de interesse, marketplace ou encaminhamento para operadores TVDE/parceiros, sem a plataforma assumir diretamente propriedade, financiamento, leasing ou exploração dos veículos.</p></div></section></div>`;
+}
+
+function viewGeral() {
+  const features = [
+    ["📱", "App Passageiro", "Pedido de viagem, preço fixo, reservas, pagamentos, faturas, avaliação e suporte.", ["Preço transparente", "Reserva imediata ou agendada", "Partilha de viagem", "Fatura automática"]],
+    ["🚘", "App Motorista", "Receção de serviços, navegação, ganhos, documentos, tempos de condução e alertas.", ["Online/offline", "Viagens disponíveis", "Ganhos por período", "Alertas de documentos"]],
+    ["🏢", "Portal Operador TVDE", "Gestão de empresas aderentes, veículos, motoristas, seguros e contratos.", ["Licença TVDE", "Viaturas", "Motoristas", "Contratos e IBAN"]],
+    ["🛡️", "Backoffice Compliance", "Controlo documental, bloqueios automáticos, auditoria, RGPD, AMT e IMT.", ["Validação documental", "Bloqueio por incumprimento", "Logs", "Relatórios"]],
+    ["💳", "Pagamentos e Faturação", "Cartão, MB WAY, wallet, fatura certificada, contas empresariais e pagamentos a operadores.", ["Pagamento eletrónico", "Fatura AT", "Comissões", "Pagamentos semanais"]],
+    ["🎧", "Suporte e Segurança", "Centro de ajuda, botão SOS, reclamações, incidentes, chat e apoio humano.", ["Botão SOS", "Chat", "Reclamações", "Incidentes"]]
+  ];
+  return `<section><div class="section-title"><div><h2>Painel geral da plataforma</h2><p class="muted">Visão integrada da operação: viagens, faturação, motoristas, operadores, compliance, segurança e RGPD.</p></div></div><div class="grid grid-4">${stat("🚘", "Viagens no mês", "3 482", "+18% face ao mês anterior")}${stat("🧾", "Faturação", "42 930 €", "Faturas emitidas automaticamente")}${stat("👤", "Motoristas ativos", "126", "98% com documentação válida")}${stat("🛡️", "Compliance", "94%", "6 alertas pendentes")}</div><div class="grid grid-3" style="margin-top:20px">${features.map(([icon,title,desc,items]) => `<div class="card feature"><div class="brand"><div class="iconbox">${icon}</div><div><h3>${title}</h3><p class="muted small">${desc}</p></div></div><div class="list">${items.map(i => `<div class="list-item">✅ ${i}</div>`).join("")}</div></div>`).join("")}</div></section>`;
+}
+
+function viewPassageiro() {
+  const selected = categories.find(c => c.name === state.tripCategory) || categories[0];
+  const estimate = selected.base + ((state.to.toLowerCase().includes("porto") || state.to.toLowerCase().includes("aeroporto")) ? 120 : 3.65);
+  return `<div class="grid grid-2"><section class="card dark"><h2>📱 App Passageiro</h2><p class="muted" style="color:#cbd5e1">Viagem imediata ou agendada com preço transparente, pagamento eletrónico e fatura.</p><div class="form"><label><span>Origem</span><input value="${state.from}" oninput="state.from=this.value" /></label><label><span>Destino</span><input value="${state.to}" oninput="state.to=this.value;render()" /></label><div><span class="small" style="color:#cbd5e1">Categoria</span><div class="choice-grid" style="margin-top:8px">${categories.map(c => `<button class="choice ${state.tripCategory === c.name ? "active" : ""}" onclick="state.tripCategory='${c.name}';render()"><strong>${c.name}</strong><br><small>${c.description}</small></button>`).join("")}</div></div><div class="choice-grid two"><button class="choice ${!state.scheduled ? "active" : ""}" onclick="state.scheduled=false;render()">Viagem imediata</button><button class="choice ${state.scheduled ? "active" : ""}" onclick="state.scheduled=true;render()">Agendar viagem</button></div><div class="card"><p class="muted small">Preço fixo estimado</p><h2>${euro(estimate)}</h2><p class="muted small">Pagamento eletrónico · Fatura automática · Suporte humano</p><button class="btn dark" style="width:100%;margin-top:12px">${state.scheduled ? "Agendar viagem" : "Pedir viagem"}</button></div></div></section><section class="grid">${stat("🛡️", "Segurança", "Motoristas verificados", "CMTVDE, contrato, carta e registo criminal.")}${stat("💳", "Pagamentos", "100% eletrónico", "Cartão, MB WAY, wallet empresarial e fatura.")}${stat("📅", "Reservas", "Agora ou agendado", "Transfers, turismo, empresas e eventos.")}</section></div>`;
+}
+
+function viewMotorista() {
+  return `<div class="grid grid-2"><section class="card"><h2>🚘 App Motorista</h2><p class="muted">Disponibilidade, viagens, ganhos, documentos, tempos de condução e alertas.</p><div class="card" style="background:#f8fafc;margin-top:18px"><p class="muted small">Ganhos de hoje</p><h2>86,40 €</h2><p class="muted small">7 viagens · 5h20 ativo · pagamento semanal previsto</p></div><div class="list">${trips.map(t => `<div class="card"><div style="display:flex;justify-content:space-between;gap:12px"><div><strong>${t.category}</strong><p class="muted small">${t.from}<br>${t.to}</p></div><div style="text-align:right"><strong>${euro(t.price)}</strong><br>${pill(t.status)}</div></div><p class="muted small">${t.distance} · ${t.time}</p></div>`).join("")}</div></section><section class="card dark"><h2>Pedido em tempo real</h2><div class="card" style="margin-top:18px"><p class="muted small">Nova viagem</p><h2>12,35 €</h2><p><strong>Origem:</strong> Baixa de Coimbra</p><p><strong>Destino:</strong> Fórum Coimbra</p><p><strong>Recolha:</strong> 3 min · <strong>Duração:</strong> 13 min</p><div class="choice-grid two"><button class="btn">Aceitar</button><button class="btn dark">Recusar</button></div></div></section></div>`;
+}
+
+function viewOperador() {
+  return `<div class="grid grid-2"><section class="card"><h2>🏢 Portal Operador TVDE</h2><p class="muted">Empresas aderentes, veículos, motoristas, seguros, contratos e IBAN.</p><div class="list">${operators.map(op => `<div class="card"><div style="display:flex;justify-content:space-between;gap:12px"><div><strong>${op.name}</strong><p class="muted small">Licença: ${op.license}</p></div>${pill(op.status)}</div><div class="grid grid-3" style="margin-top:12px"><div class="card"><strong>${op.drivers}</strong><p class="muted small">Motoristas</p></div><div class="card"><strong>${op.vehicles}</strong><p class="muted small">Viaturas</p></div><div class="card"><strong>${op.compliance}%</strong><p class="muted small">Compliance</p></div></div></div>`).join("")}</div></section><section class="card"><h2>Motoristas associados</h2><div class="list">${drivers.map(d => `<div class="card"><div style="display:flex;justify-content:space-between;gap:12px"><div><strong>${d.name}</strong><p class="muted small">${d.number}<br>Operador: ${d.operator}<br>${d.vehicle} · ${d.plate}</p></div>${pill(d.status)}</div><div>${d.docs.map(x => `<span class="pill">${x}</span>`).join(" ")}</div></div>`).join("")}</div></section></div>`;
+}
+
+function viewCompliance() {
+  const checks = ["Licença IMT da plataforma", "Marca registada INPI", "Pagamentos eletrónicos", "Faturação certificada AT", "RGPD, DPIA e privacidade", "Reporte mensal AMT", "Livro de Reclamações Eletrónico", "Termos e Condições"];
+  return `<section><h2>Compliance, IMT, AMT, RGPD e fiscalização</h2><p class="muted">Painel de controlo para garantir licença própria, validação documental e independência face aos veículos.</p><div class="grid grid-4" style="margin-top:18px">${stat("📁", "Documentos validados", "418", "Operadores, motoristas e veículos")}${stat("⚠️", "Alertas críticos", "6", "Exigem ação antes de bloquear")}${stat("🏛️", "AMT/IMT", "Mensal", "Reporte regulatório preparado")}${stat("🔐", "RGPD", "DPIA", "Avaliação de impacto em revisão")}</div><div class="card" style="margin-top:20px"><div class="grid grid-2">${checks.map((c, i) => `<div class="list-item"><span>🛡️</span><div><strong>${c}</strong><br><span class="muted small">Responsável: ${i % 2 ? "Jurídico" : "Compliance"}</span></div>${pill(i % 3 === 0 ? "Conforme" : "A rever")}</div>`).join("")}</div></div></section>`;
+}
+
+function viewAdmin() {
+  const filtered = state.adminFilter === "Todos" ? state.registrations : state.registrations.filter(r => r.type === state.adminFilter);
+  const statuses = ["Pendente", "Aprovado", "A rever", "Rejeitado", "Bloqueado"];
+  return `<section><div class="section-title"><div><h2>Painel administrativo de aprovação</h2><p class="muted">Aprovação manual de operadores, motoristas, veículos, documentos e histórico de auditoria.</p></div><button class="btn dark">Exportar auditoria</button></div><div class="grid grid-4">${stat("🗄️", "Tabelas separadas", "6", "Operadores, motoristas, veículos, proprietários, documentos e auditoria")}${stat("🔗", "Ligação motorista", "Obrigatória", "Motorista ligado a operador TVDE validado")}${stat("📤", "Uploads", "Ativos", "Licenças, CMTVDE, seguros, inspeções e contratos")}${stat("🕘", "Auditoria", state.audit.length, "Histórico de ações administrativas")}</div><div class="card" style="margin-top:20px"><h3>Modelo de base de dados</h3><p class="muted">Estrutura lógica das tabelas necessárias para gerir a plataforma com rastreabilidade.</p><div class="grid grid-2" style="margin-top:16px">${databaseTables.map(t => `<div class="card" style="background:#f8fafc"><h4>🗄️ ${t.table}</h4><p class="muted small">${t.description}</p>${t.fields.map(f => `<span class="table-badge">${f}</span>`).join(" ")}</div>`).join("")}</div></div><div class="grid grid-2" style="margin-top:20px"><div class="card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><div><h3>Registos e validação manual</h3><p class="muted small">Aprovar, rever, rejeitar ou bloquear entidades registadas.</p></div><div class="filterbar">${["Todos", "Operador", "Motorista", "Veículo"].map(f => `<button class="${state.adminFilter === f ? "active" : ""}" onclick="setAdminFilter('${f}')">${f}</button>`).join("")}</div></div><div class="table-wrap"><table><thead><tr><th>Tipo</th><th>Nome</th><th>Ligação</th><th>Docs</th><th>Estado</th><th>Ações</th></tr></thead><tbody>${filtered.map(r => `<tr><td><strong>${r.type}</strong></td><td><strong>${r.name}</strong><br><span class="muted small">${r.id} · ${r.submittedAt}</span></td><td>${r.linkedTo}</td><td><strong>${r.documents}</strong></td><td>${pill(r.status)}</td><td><div class="actions">${statuses.filter(s => s !== r.status).map(s => `<button class="btn small dark" onclick="changeStatus('${r.id}','${s}')">${s}</button>`).join("")}</div></td></tr>`).join("")}</tbody></table></div></div><div class="card" style="background:#f8fafc"><h3>🕘 Histórico de auditoria</h3><div class="list">${state.audit.map(a => `<div class="card"><div style="display:flex;justify-content:space-between;gap:10px"><div><strong>${a.action}</strong><p class="muted small">${a.entity}</p></div><span class="pill">${a.user}</span></div><p class="muted small">${a.date} · ${a.from} → <strong>${a.to}</strong></p></div>`).join("")}</div></div></div></section>`;
+}
+
+function viewPagamentos() {
+  return `<section><h2>Pagamentos eletrónicos e faturação</h2><p class="muted">Estrutura para pagamento eletrónico, fatura, comissão da plataforma e liquidação a operadores.</p><div class="grid grid-4" style="margin-top:18px">${stat("💳", "Cartão/Wallet", "Ativo", "Cartão, Apple Pay e Google Pay")}${stat("📲", "MB WAY", "Preparado", "Integração por PSP nacional")}${stat("🧾", "Faturação AT", "Automática", "Fatura após cada viagem")}${stat("🏢", "Empresas", "Conta mensal", "Centro de custos e relatórios")}</div><div class="card" style="margin-top:20px"><h3>Fluxo financeiro da viagem</h3><div class="grid grid-3" style="margin-top:16px">${["Cliente paga eletronicamente", "Plataforma regista a viagem", "Sistema calcula comissão", "Fatura é emitida", "Operador recebe liquidação", "Relatório financeiro é atualizado"].map((x,i) => `<div class="list-item"><strong>${i+1}</strong> ${x}</div>`).join("")}</div></div></section>`;
+}
+function viewSuporte() { return `<section><h2>Suporte, segurança e qualidade</h2><p class="muted">Apoio humano, botão SOS, incidentes, reclamações, avaliação e controlo de qualidade.</p><div class="grid grid-4" style="margin-top:18px">${stat("🎧", "Suporte", "24/7", "Chat, email e telefone")}${stat("🚨", "Botão SOS", "Ativo", "Partilha de localização e incidente")}${stat("⭐", "Avaliação média", "4,8", "Passageiros e motoristas")}${stat("📄", "Reclamações", "12", "Em análise este mês")}</div><div class="grid grid-3" style="margin-top:20px">${["Centro de ajuda", "Reclamações e RAL", "Incidentes de segurança", "Suporte empresarial", "Perdidos e achados", "Qualidade do serviço"].map(x => `<div class="card"><h3>${x}</h3><p class="muted small">Módulo operacional preparado para integração com backoffice.</p></div>`).join("")}</div></section>`; }
+function viewRelatorios() { return `<section><h2>Relatórios, auditoria e gestão</h2><p class="muted">Dashboards para administração, AMT, IMT, fiscalidade, qualidade, viagens, operadores e clientes.</p><div class="grid grid-4" style="margin-top:18px">${stat("📊", "Receita média/viagem", "12,33 €", "Todas as categorias")}${stat("👥", "Clientes ativos", "8 420", "Base registada")}${stat("🏢", "Operadores", "32", "Rede aderente")}${stat("📁", "Auditoria", "Logs", "Acessos e alterações")}</div><div class="card" style="margin-top:20px"><h3>Exportações disponíveis</h3><div class="grid grid-3" style="margin-top:16px">${["Relatório AMT", "Mapa de viagens", "Faturação mensal", "Comissões da plataforma", "Documentos expirados", "Indicadores de qualidade", "Tempo de condução", "Operadores aderentes", "Clientes empresariais"].map(x => `<button class="profile-card"><strong>${x}</strong></button>`).join("")}</div></div></section>`; }
+
+function currentView() {
+  if (state.tab === "acesso") return viewAcesso();
+  if (state.tab === "geral") return viewGeral();
+  if (state.tab === "passageiro") return viewPassageiro();
+  if (state.tab === "motorista") return viewMotorista();
+  if (state.tab === "operador") return viewOperador();
+  if (state.tab === "compliance") return viewCompliance();
+  if (state.tab === "admin") return viewAdmin();
+  if (state.tab === "pagamentos") return viewPagamentos();
+  if (state.tab === "suporte") return viewSuporte();
+  if (state.tab === "relatorios") return viewRelatorios();
+  return viewAcesso();
+}
+function render() { document.getElementById("app").innerHTML = shell(currentView()); }
+window.setTab = setTab;
+window.setRegister = setRegister;
+window.setAdminFilter = setAdminFilter;
+window.changeStatus = changeStatus;
+window.state = state;
+window.render = render;
+render();
+
+  </script>
+</body>
+</html>
