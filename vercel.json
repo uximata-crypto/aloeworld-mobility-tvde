@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/send-registration-email.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}
