@@ -2,9 +2,6 @@
   "functions": {
     "api/send-registration-email.js": {
       "runtime": "nodejs20.x"
-    },
-    "api/google-maps-config.js": {
-      "runtime": "nodejs20.x"
     }
   }
 }
